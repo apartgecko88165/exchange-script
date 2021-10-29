@@ -30,7 +30,12 @@ def make(people):
 result = make(people)
 
 with open("previous.json", "r") as f:
-    pass
+    previous = json.load(f)
+
+with open("previous.json", "w") as f:
+    for person in result:
+        previous[person] = result[person]
+    f.write(json.dumps(previous))
 
 with open("list.txt", "w") as f:
     doc = ""
